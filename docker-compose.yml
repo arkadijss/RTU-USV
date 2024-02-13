@@ -1,0 +1,19 @@
+version: '3'
+services:
+  rtu-usv:
+    image: rtu-usv
+    build:
+      context: .
+      dockerfile: Dockerfile
+    network_mode: host
+    mem_limit: 8g
+    volumes:
+      - ./:/workspace:cached
+    command: tail -f /dev/null  # A command that keeps the container running
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

@@ -1,0 +1,29 @@
+{
+    "name": "RTU-USV",
+  
+    "containerUser": "uzer",
+    "remoteUser": "uzer",
+  
+    "dockerComposeFile": [
+      "../docker-compose.yml",
+      "docker-compose.extend.yml"
+    ],
+    "service": "rtu-usv",
+  
+    "workspaceFolder": "/workspace",
+    
+    "shutdownAction": "stopCompose",
+  
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "ms-python.python",
+          "GitHub.copilot",
+          "ms-python.black-formatter"
+        ],
+        "settings": {
+          "terminal.integrated.defaultProfile.linux": "bash"
+        }
+      }
+    }
+  }
