@@ -132,3 +132,6 @@ RUN cd $WORKSPACE_DIR && \
 # Automatically source the ROS installation and the workspace in every new shell
 RUN echo "source /opt/ros/$ROSDIST/setup.sh" >> "/home/$USERNAME/.bashrc"
 RUN echo "source $WORKSPACE_DIR/install/setup.bash" >> "/home/$USERNAME/.bashrc"
+
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
