@@ -1,4 +1,5 @@
 import rclpy
+from nav_msgs.msg import Odometry
 from rclpy.node import Node
 from std_msgs.msg import Float64
 from usv import USV
@@ -9,6 +10,7 @@ class USV_ROS(USV, Node):
         self,
         left_thrust_topic="/wamv/thrusters/left/thrust",
         right_thrust_topic="/wamv/thrusters/right/thrust",
+        use_gt_pose=True,
     ):
         super().__init__()
         Node.__init__(self, "usv_ros")
@@ -18,6 +20,17 @@ class USV_ROS(USV, Node):
         self.right_thrust_publisher = self.create_publisher(
             Float64, right_thrust_topic, 10
         )
+
+        if use_gt_pose:
+            self.odometry_subscriber = self.create_subscription(
+                Odometry,
+                "/wamv/sensors/position/ground_truth_odometry",
+                self.pose_callback,
+                10,
+            )
+
+    def pose_callback(self, msg):
+        self.pose = msg.pose.pose
 
     def publish(self):
         left_thrust_msg = Float64()

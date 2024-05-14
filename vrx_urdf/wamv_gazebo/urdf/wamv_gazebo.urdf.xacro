@@ -8,7 +8,7 @@
   <xacro:arg name="gps_enabled" default="false" />
   <xacro:arg name="imu_enabled" default="false" />
   <xacro:arg name="lidar_enabled" default="false" />
-  <xacro:arg name="ground_truth_enabled" default="false" />
+  <xacro:arg name="ground_truth_enabled" default="true" />
   <xacro:arg name="vrx_sensors_enabled" default="false" />
   <xacro:arg name="pinger_enabled" default="false" />
   <xacro:arg name="ball_shooter_enabled" default="false" />
